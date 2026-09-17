@@ -13,6 +13,7 @@ const getKinFromDate = window.MayaApp.getKinFromDate;
 const buildKinProfile = window.MayaApp.buildKinProfile;
 const renderResultDisplay = window.MayaApp.renderResultDisplay;
 const renderCycleTable = window.MayaApp.renderCycleTable;
+const bindCycleExpand = window.MayaApp.bindCycleExpand;
 const syncUrl = window.MayaApp.syncUrl;
 const syncKinUrl = window.MayaApp.syncKinUrl;
 const fillInputs = window.MayaApp.fillInputs;
@@ -89,6 +90,8 @@ const els = {
 
   cycleCard: document.getElementById('cycle-card'),
   cycleTableBody: document.getElementById('cycle-table-body'),
+  cyclePrevBtn: document.getElementById('cycle-prev-btn'),
+  cycleNextBtn: document.getElementById('cycle-next-btn'),
 };
 
 /**
@@ -117,6 +120,8 @@ function renderResultFromKin(kin) {
   renderResultDisplay(profile, els);
   els.cycleCard.classList.add('hidden');
   els.cycleTableBody.innerHTML = '';
+  els.cyclePrevBtn.classList.add('hidden');
+  els.cycleNextBtn.classList.add('hidden');
 }
 
 // --- フォーム送信（生年月日 または KIN番号） ---
@@ -175,6 +180,8 @@ els.btnClear.addEventListener('click', () => {
   els.shareCard.classList.add('hidden');
   els.cycleCard.classList.add('hidden');
   els.cycleTableBody.innerHTML = '';
+  els.cyclePrevBtn.classList.add('hidden');
+  els.cycleNextBtn.classList.add('hidden');
   els.formError.classList.add('hidden');
 
   window.history.replaceState(null, '', window.location.pathname);
@@ -182,6 +189,7 @@ els.btnClear.addEventListener('click', () => {
 });
 
 bindShareActions(els);
+bindCycleExpand(els);
 
 // --- 初期化：URLパラメータ ?birthday=YYYY-MM-DD または ?kin=1-260 があれば自動診断 ---
 (function init() {

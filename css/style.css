@@ -23,6 +23,9 @@
 
 html {
   min-height: 100%;
+  /* モバイル端末が横スクロールする表内の文字を自動拡大するのを防ぐ */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -360,7 +363,17 @@ body {
   color: var(--color-text-soft);
 }
 
-/* ---- 年廻り一覧表（0歳〜51歳・52年分） ---- */
+/* ---- 年廻り一覧表（現在の年齢の前後5年〜ボタンで最大52年分） ---- */
+.cycle-expand-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.cycle-expand-row:first-of-type {
+  margin-top: 0;
+}
+
 .cycle-table-wrapper {
   overflow-x: auto;
   margin-top: 16px;

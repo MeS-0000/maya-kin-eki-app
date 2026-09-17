@@ -210,9 +210,12 @@
 
   </section>
 
-  <!-- ③ 年廻り一覧表（0歳〜51歳・52年分。1年につき2行＝紋章等の行＋易の行） -->
+  <!-- ③ 年廻り一覧表（初期表示は現在の年齢の前後5年分。ボタンで5年ずつ最大52年分まで拡張。1年につき2行＝紋章等の行＋易の行） -->
   <section class="card hidden" id="cycle-card">
-    <h2 class="card-title">年廻り一覧表（0歳〜51歳・52年分）</h2>
+    <h2 class="card-title">年廻り一覧表（現在の年齢の前後5年〜ボタンで最大52年分）</h2>
+    <div class="cycle-expand-row">
+      <button type="button" class="btn-secondary hidden" id="cycle-prev-btn">◀ 前の5年を表示</button>
+    </div>
     <div class="cycle-table-wrapper">
       <table class="cycle-table">
         <thead>
@@ -227,6 +230,9 @@
         </thead>
         <tbody id="cycle-table-body"></tbody>
       </table>
+    </div>
+    <div class="cycle-expand-row">
+      <button type="button" class="btn-secondary hidden" id="cycle-next-btn">次の5年を表示 ▶</button>
     </div>
   </section>
 

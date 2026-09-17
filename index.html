@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>マヤをまなぶ｜無料であなたの紋章を診断</title>
+<meta name="description" content="生年月日またはKIN番号からマヤ暦のKIN番号・紋章・チャクラ・鏡の向こうKIN・絶対反対KIN・易（周易六十四卦）・52年分の年廻りを無料で診断できます。" />
+<meta name="robots" content="index,follow" />
+
+<!-- Open Graph / SNSシェア用 -->
+<meta property="og:title" content="マヤをまなぶ｜無料であなたの紋章を診断" />
+<meta property="og:description" content="生年月日またはKIN番号からマヤ暦のKIN番号・紋章・チャクラ・鏡の向こうKIN・絶対反対KIN・易（周易六十四卦）・52年分の年廻りを無料で診断できます。" />
+<meta property="og:type" content="website" />
+
+<!-- 構造化データ（SEO対策） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "マヤをまなぶ",
+  "url": "/",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "All",
+  "description": "生年月日またはKIN番号からマヤ暦のKIN番号・紋章・チャクラ・鏡の向こうKIN・絶対反対KIN・易（周易六十四卦）・52年分の年廻りを無料で診断できるWebアプリ。",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <h1 class="site-title">マヤをまなぶ</h1>
+  <p class="site-subtitle">生年月日またはKIN番号からマヤ暦のKIN番号・紋章・チャクラ・鏡の向こうKIN・絶対反対KIN・易（周易六十四卦）・52年分の年廻りを無料で診断できる<br>
+  マヤ暦を学んでいる方、マヤ暦鑑定をされる方用の便利ツールです。</p>
+</header>
+
+<main class="container">
+
+  <!-- ① 生年月日入力カード -->
+  <section class="card" id="input-card">
+    <h2 class="card-title">生年月日 または KIN番号を入力</h2>
+    <form id="birthday-form" class="form-row">
+      <label class="field">
+        <span>年</span>
+        <input type="number" id="input-year" min="1900" max="2100" placeholder="1990" />
+      </label>
+      <label class="field">
+        <span>月</span>
+        <input type="number" id="input-month" min="1" max="12" placeholder="1" />
+      </label>
+      <label class="field">
+        <span>日</span>
+        <input type="number" id="input-day" min="1" max="31" placeholder="1" />
+      </label>
+      <label class="field field-date">
+        <span>または日付で選択</span>
+        <input type="date" id="input-date-picker" />
+      </label>
+      <label class="field field-kin">
+        <span>またはKIN番号で検索</span>
+        <input type="number" id="input-kin" min="1" max="260" placeholder="KIN番号" />
+      </label>
+      <button type="submit" class="btn-primary">診断する</button>
+      <button type="button" class="btn-secondary" id="btn-clear">クリア</button>
+    </form>
+    <p class="form-error hidden" id="form-error">生年月日、またはKIN番号（1〜260）を入力してください。</p>
+  </section>
+
+  <!-- ② 結果表示エリア -->
+  <section id="result-area" class="result-area hidden">
+
+    <div class="card kin-card" id="kin-headline">
+      <p class="kin-number-row">
+        <span class="kin-number" id="result-kin">KIN0</span>
+        <span class="kin-black-badge hidden" id="kin-black-badge">黒KIN</span>
+      </p>
+      <table class="kin-headline-table">
+        <tbody>
+          <tr>
+            <td class="kin-headline-label">太陽の紋章：</td>
+            <td class="kin-headline-icon"><img id="result-headline-seal-icon" class="seal-icon" alt="" /></td>
+            <td class="kin-headline-number" id="result-headline-seal-number"></td>
+            <td class="kin-headline-name" id="result-headline-seal-name"></td>
+          </tr>
+          <tr>
+            <td class="kin-headline-label">ウェイブスペル：</td>
+            <td class="kin-headline-icon"><img id="result-headline-wavespell-icon" class="seal-icon" alt="" /></td>
+            <td class="kin-headline-number" id="result-headline-wavespell-number"></td>
+            <td class="kin-headline-name" id="result-headline-wavespell-name"></td>
+          </tr>
+          <tr class="hidden" id="result-headline-extra-row">
+            <td class="kin-headline-label">追加紋章：</td>
+            <td class="kin-headline-icon"><img id="result-headline-extra-icon" class="seal-icon" alt="" /></td>
+            <td class="kin-headline-number" id="result-headline-extra-number"></td>
+            <td class="kin-headline-name" id="result-headline-extra-name"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="badge-row hidden" id="result-badges"></div>
+    </div>
+
+    <div class="grid">
+      <div class="card info-card">
+        <h3>銀河の音</h3>
+        <p class="value" id="result-tone"></p>
+        <p class="keyword" id="result-tone-keyword"></p>
+      </div>
+      <div class="card info-card">
+        <h3>鏡の向こうKIN</h3>
+        <p class="value" id="seal-mirror"></p>
+        <p class="keyword kin-detail" id="seal-mirror-detail"></p>
+      </div>
+      <div class="card info-card">
+        <h3>絶対反対KIN</h3>
+        <p class="value" id="seal-opposite-kin"></p>
+        <p class="keyword kin-detail" id="seal-opposite-kin-detail"></p>
+      </div>
+      <div class="card info-card">
+        <h3>チャクラ</h3>
+        <p class="value" id="result-chakra"></p>
+        <p class="keyword" id="result-chakra-keyword"></p>
+      </div>
+      <div class="card info-card">
+        <h3>5つの城</h3>
+        <p class="value" id="result-castle"></p>
+        <p class="keyword" id="result-castle-keyword"></p>
+      </div>
+    </div>
+
+    <h3 class="section-label">関係性【太陽の紋章】</h3>
+    <div class="cross-grid">
+      <div class="cross-item cross-guide">
+        <h3>ガイドKIN</h3>
+        <p class="value" id="seal-guide"></p>
+      </div>
+      <div class="cross-item cross-opposite">
+        <h3>反対KIN</h3>
+        <p class="value" id="seal-opposite-seal"></p>
+      </div>
+      <div class="cross-item cross-center">
+        <h3>太陽の紋章</h3>
+        <p class="value" id="seal-center"></p>
+      </div>
+      <div class="cross-item cross-analog">
+        <h3>類似KIN</h3>
+        <p class="value" id="seal-analog"></p>
+      </div>
+      <div class="cross-item cross-mystic">
+        <h3>神秘KIN</h3>
+        <p class="value" id="seal-mystic"></p>
+      </div>
+    </div>
+
+    <h3 class="section-label" id="wave-section-title">関係性【ウェイブスペル】</h3>
+    <div class="cross-grid cross-grid--no-guide">
+      <div class="cross-item cross-opposite">
+        <h3>反対KIN</h3>
+        <p class="value" id="wave-opposite-seal"></p>
+      </div>
+      <div class="cross-item cross-center">
+        <h3>ウェイブスペル</h3>
+        <p class="value" id="wave-center"></p>
+      </div>
+      <div class="cross-item cross-analog">
+        <h3>類似KIN</h3>
+        <p class="value" id="wave-analog"></p>
+      </div>
+      <div class="cross-item cross-mystic">
+        <h3>神秘KIN</h3>
+        <p class="value" id="wave-mystic"></p>
+      </div>
+    </div>
+
+    <h3 class="section-label">関係性【銀河の音】</h3>
+    <div class="grid">
+      <div class="card info-card">
+        <h3>倍音関係</h3>
+        <p class="value" id="tone-harmonic"></p>
+        <p class="keyword" id="tone-harmonic-keyword"></p>
+      </div>
+      <div class="card info-card">
+        <h3>補完関係</h3>
+        <p class="value" id="tone-complement"></p>
+        <p class="keyword" id="tone-complement-keyword"></p>
+      </div>
+      <div class="card info-card">
+        <h3>協和関係</h3>
+        <p class="value" id="tone-harmony"></p>
+        <p class="keyword" id="tone-harmony-keyword"></p>
+      </div>
+      <div class="card info-card">
+        <h3>連携関係</h3>
+        <p class="value" id="tone-linked"></p>
+        <p class="keyword" id="tone-linked-keyword"></p>
+      </div>
+    </div>
+
+    <h3 class="section-label">易（周易六十四卦）</h3>
+    <div class="card iching-card">
+      <p class="iching-name" id="result-iching-name"></p>
+      <p class="iching-image" id="result-iching-image"></p>
+      <p class="iching-message" id="result-iching-message"></p>
+    </div>
+
+  </section>
+
+  <!-- ③ 年廻り一覧表（0歳〜51歳・52年分。1年につき2行＝紋章等の行＋易の行） -->
+  <section class="card hidden" id="cycle-card">
+    <h2 class="card-title">年廻り一覧表（0歳〜51歳・52年分）</h2>
+    <div class="cycle-table-wrapper">
+      <table class="cycle-table">
+        <thead>
+          <tr>
+            <th>西暦年月日</th>
+            <th>年齢</th>
+            <th>KIN</th>
+            <th>銀河の音</th>
+            <th>太陽の紋章</th>
+            <th>ウェイブスペル</th>
+          </tr>
+        </thead>
+        <tbody id="cycle-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 共有・印刷（一番下に配置） -->
+  <div class="card action-card no-print hidden" id="share-card">
+    <h3>結果をシェア・保存</h3>
+    <div class="action-row">
+      <button class="btn-secondary" id="share-x">Xでシェア</button>
+      <button class="btn-secondary" id="share-line">LINEでシェア</button>
+      <button class="btn-secondary" id="btn-print">PDF保存（印刷）</button>
+      <button class="btn-secondary" id="btn-copy-url">結果のURLをコピー</button>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer no-print">
+  <p>※本サイトの診断結果は学習・参考用です。鑑定の最終的な解釈は専門家にご相談ください。</p>
+  <p>KIN番号の計算および関連情報の算出において、シンクロニシティ研究会の算出方法を参考にしています。</p>
+</footer>
+
+<script src="js/sealsData.js"></script>
+<script src="js/sealIcons.js"></script>
+<script src="js/chakraConfig.js"></script>
+<script src="js/castleData.js"></script>
+<script src="js/ichingData.js"></script>
+<script src="js/toneRelations.js"></script>
+<script src="js/mayaCalc.js"></script>
+<script src="js/yearForecast.js"></script>
+<script src="js/resultRenderer.js"></script>
+<script src="js/cycleTable.js"></script>
+<script src="js/urlSync.js"></script>
+<script src="js/shareActions.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

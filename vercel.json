@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/kin", "destination": "/index.html" },
+    { "source": "/kin/(.*)", "destination": "/index.html" }
+  ]
+}

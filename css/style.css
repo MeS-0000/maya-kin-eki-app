@@ -1,0 +1,549 @@
+/* ===========================================================
+   マヤをまなぶ - style.css
+   おしゃれ・モダン・シャープな細線デザイン
+   カラー: 白 / グレー / ベージュ / イエロー
+   =========================================================== */
+
+:root {
+  --color-bg: #faf9f7;
+  --color-card: #ffffff;
+  --color-text: #3a3a3a;
+  --color-text-soft: #8a8580;
+  --color-beige: #efe9e0;
+  --color-lavender: #f3d98a;
+  --color-lavender-deep: #c79f1f;
+  --color-gray-line: #dedad4;
+  --radius: 14px;
+  --shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  background-image: linear-gradient(rgba(250, 249, 247, 0.5), rgba(250, 249, 247, 0.5)), url("../img/金色できらきら輝いている星.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-header {
+  text-align: center;
+  padding: 48px 20px 24px;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+}
+
+.site-subtitle {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  letter-spacing: 0.05em;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* ---- カード共通 ---- */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-gray-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  margin: 0 0 18px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--color-gray-line);
+  padding-bottom: 10px;
+}
+
+/* ---- フォーム ---- */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: var(--color-text-soft);
+  gap: 6px;
+}
+
+.field input {
+  border: none;
+  border-bottom: 1px solid var(--color-gray-line);
+  background: transparent;
+  font-size: 16px;
+  padding: 6px 2px;
+  width: 110px;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.field input:focus {
+  border-bottom: 1px solid var(--color-lavender-deep);
+}
+
+.field-date input {
+  width: 150px;
+}
+
+.field-kin input {
+  width: 100px;
+}
+
+.btn-primary {
+  background: var(--color-lavender-deep);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 28px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  background: var(--color-beige);
+  color: var(--color-text);
+  border: 1px solid var(--color-gray-line);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--color-lavender);
+  border-color: var(--color-lavender-deep);
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-error {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #c0392b;
+}
+
+/* ---- 結果エリア ---- */
+.hidden {
+  display: none !important;
+}
+
+.kin-card {
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff, var(--color-lavender) 180%);
+  border: 1px solid var(--color-lavender);
+}
+
+.kin-number-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  font-size: 40px;
+  margin: 0;
+}
+
+.kin-number {
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-lavender-deep);
+}
+
+/* 黒KINラベル: KIN番号の約1/3のサイズで右隣に表示 */
+.kin-black-badge {
+  font-size: 0.33em;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.kin-sub {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+.kin-headline-table {
+  width: 100%;
+  max-width: 360px;
+  margin: 10px auto 0;
+  border-collapse: collapse;
+}
+
+.kin-headline-table td {
+  padding: 4px 6px;
+  font-size: 15px;
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.kin-headline-label {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.kin-headline-icon {
+  line-height: 0;
+}
+
+.kin-headline-number {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.kin-headline-name {
+  text-align: left;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.badge-row {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.badge-polarity { background: #8ab4d8; }
+.badge-absoluteExpansion { background: #7fbf8e; }
+.badge-narcissist { background: #e0a45c; }
+.badge-narcissistMore { background: #d8785c; }
+.badge-special { background: #c74f8d; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.section-label {
+  margin: 28px 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-lavender-deep);
+  border-left: 3px solid var(--color-lavender);
+  padding-left: 10px;
+}
+
+.info-card h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-text-soft);
+}
+
+.info-card .value {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.seal-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seal-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray-line);
+}
+
+.info-card .keyword {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--color-text-soft);
+}
+
+.info-card .keyword.kin-detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.info-card .keyword.kin-detail .seal-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- 易（周易六十四卦） ---- */
+.iching-card {
+  text-align: center;
+  padding: 18px 20px;
+}
+
+.iching-name {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-lavender-deep);
+}
+
+.iching-image {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.iching-message {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-soft);
+}
+
+/* ---- 年廻り一覧表（0歳〜51歳・52年分） ---- */
+.cycle-table-wrapper {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.cycle-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.cycle-table th,
+.cycle-table td {
+  border-bottom: 1px solid var(--color-gray-line);
+  padding: 8px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.cycle-table th {
+  color: var(--color-text-soft);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.cycle-table .seal-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.cycle-row-current td {
+  font-weight: 700;
+}
+
+/* 年廻り一覧表: 1年につき2行（紋章等の行＋易の行）で表示する */
+.cycle-row-data td {
+  border-bottom: none;
+}
+
+.cycle-row-iching td {
+  white-space: normal;
+  font-size: 12px;
+  color: var(--color-text-soft);
+  padding-top: 0;
+}
+
+/* 年廻り行の背景色：その年のKINが属するウェイブスペルの色（赤・白・青・黄）で塗る */
+.cycle-row-red td {
+  background-color: rgba(214, 66, 62, 0.14);
+}
+.cycle-row-white td {
+  background-color: rgba(150, 150, 150, 0.14);
+}
+.cycle-row-blue td {
+  background-color: rgba(58, 122, 197, 0.14);
+}
+.cycle-row-yellow td {
+  background-color: rgba(230, 168, 27, 0.16);
+}
+
+@media print {
+  .cycle-table-wrapper {
+    overflow-x: visible;
+  }
+
+  .cycle-table {
+    font-size: 11px;
+  }
+
+  .cycle-table thead {
+    display: table-header-group;
+  }
+
+  .cycle-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* ---- 十字型レイアウト（ガイド/反対/類似/神秘 + 中心の紋章） ---- */
+.cross-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    ".        guide  ."
+    "opposite center analog"
+    ".        mystic .";
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.cross-item {
+  background: var(--color-card);
+  border: 1px solid var(--color-gray-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 10px;
+  text-align: center;
+}
+
+.cross-item h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-text-soft);
+}
+
+.cross-item .value {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.cross-guide { grid-area: guide; }
+.cross-opposite { grid-area: opposite; }
+.cross-analog { grid-area: analog; }
+.cross-mystic { grid-area: mystic; }
+
+.cross-center {
+  grid-area: center;
+  background: var(--color-beige);
+  border-color: var(--color-lavender-deep);
+}
+
+/* ガイドKINなし版（ウェイブスペル用）: 上段を省き、中段と下段のみにする */
+.cross-grid--no-guide {
+  grid-template-areas:
+    "opposite center analog"
+    ".        mystic .";
+}
+
+.site-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--color-text-soft);
+  padding: 24px 16px 50px;
+}
+
+/* ---- レスポンシブ（スマホ対応） ---- */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .field input {
+    width: 90px;
+  }
+  .site-title {
+    font-size: 22px;
+  }
+  .kin-number-row {
+    font-size: 32px;
+  }
+  .cross-grid {
+    gap: 6px;
+  }
+  .cross-item {
+    padding: 10px 4px;
+  }
+  .cross-item .seal-label {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cross-item .seal-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .cross-item .value {
+    font-size: 12px;
+  }
+}
+
+/* ---- 印刷（PDF保存）対応 ---- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
